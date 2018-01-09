@@ -7,7 +7,8 @@ def dog():
     # return requests.get("https://dog.ceo/api/breeds/image/random").json()['message']
 
     # here's another dog!
-    return requests.get("http://www.what-dog.net/Images/faces2/scroll001.jpg").json()['message']
+    # return requests.get("http://www.what-dog.net/Images/faces2/scroll001.jpg").json()['message']
+    return "https://www.what-dog.net/Images/faces2/scroll001.jpg"
 
 def on_message(msg, server):
     text = msg.get("text", "")
