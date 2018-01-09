@@ -3,7 +3,11 @@ import re
 import requests
 
 def dog():
-    return requests.get("https://dog.ceo/api/breeds/image/random").json()['message']
+	# old dog picture code
+    # return requests.get("https://dog.ceo/api/breeds/image/random").json()['message']
+
+    # here's another dog!
+    return requests.get("https://www.what-dog.net/Images/faces2/scroll001.jpg").json()['message']
 
 def on_message(msg, server):
     text = msg.get("text", "")
