@@ -170,7 +170,22 @@ def getif(config, name, envvar):
 
 def init_config():
     config = {}
-    getif(config, "token", "SLACK_TOKEN")
+    if "SLACK_TOKEN" in os.environ: #allow user to not use AWS feature
+        getif(config,"token","SLACK_TOKEN")
+    else: # obtain slack token from AWS S3 bucker student.tim77.net
+        import boto3
+        file_key = 42 # this is specific to the file of interest
+        client = boto3.client("s3") # create a S3 client
+
+        # obtain the file
+        file = client.get_object(Bucket="student.tim77.net",Key=file_key)
+
+        # obtain the token (not compressed)
+        token = file["Body"].read().decode()
+
+        config["token"]=token
+
+
     getif(config, "loglevel", "LIMBO_LOGLEVEL")
     getif(config, "logfile", "LIMBO_LOGFILE")
     getif(config, "logformat", "LIMBO_LOGFORMAT")
