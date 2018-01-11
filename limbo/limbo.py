@@ -195,7 +195,9 @@ def init_config():
         client = boto3.client("s3",
             aws_access_key_id = aws_AK,
             aws_secret_access_key = aws_SAK) # create a S3 client
-        file = client.get_object(Bucket="student.tim77.net",Key=file_key)
+        file = client.get_object(Bucket="student.tim77.net",Key=file_key,
+            aws_access_key_id = aws_AK,
+            aws_secret_access_key = aws_SAK)
 
         # obtain the token (not compressed)
         token = file["Body"].read().decode()
