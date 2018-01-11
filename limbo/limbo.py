@@ -174,7 +174,7 @@ def init_config():
         getif(config,"token","SLACK_TOKEN")
     else: # obtain slack token from AWS S3 bucker student.tim77.net
         import boto3
-        file_key = 42 # this is specific to the file of interest
+        file_key = "amva13-stoken" # this is specific to the file of interest
         client = boto3.client("s3") # create a S3 client
 
         # obtain the file
