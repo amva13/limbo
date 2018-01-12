@@ -181,7 +181,7 @@ def init_config():
         aws_SAK = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
         # obtain the file
-        client = boto3.resource("s3",
+        client = boto3.client("s3",
             aws_access_key_id = aws_AK,
             aws_secret_access_key = aws_SAK) # create a S3 client
         file = client.get_object(Bucket="student.tim77.net",Key=file_key)
