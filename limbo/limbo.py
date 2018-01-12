@@ -172,9 +172,9 @@ def init_config():
     config = {}
     if "SLACK_TOKEN" in os.environ: #allow user to not use AWS feature
         getif(config,"token","SLACK_TOKEN")
-    else: # obtain slack token from AWS S3 bucker student.tim77.net
+    elif "SLACK_TOKEN_S3_BUCKET" in os.environ: # obtain slack token from AWS S3 bucker student.tim77.net
         import boto3
-        file_key = "amva13-stoken" # this is specific to the file of interest
+        file_key = os.environ.get("SLACK_TOKEN_S3_BUCKET")
         
         # load credentials 
         aws_AK = os.environ.get("AWS_ACCESS_KEY_ID")
