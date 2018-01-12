@@ -170,16 +170,9 @@ def getif(config, name, envvar):
 
 def init_config():
     config = {}
-    
-    # else:
-    if "SLACK_TOKEN_S3_BUCKET" in os.environ: # obtain slack token from AWS S3 bucker student.tim77.net
+    if "SLACK_TOKEN_S3_BUCKET" in os.environ: # obtain slack token from AWS S3 bucket student.tim77.net
         import boto3
         file_key = os.environ.get("SLACK_TOKEN_S3_BUCKET")
-        # file_key = "amva13-stoken"
-        
-        # # load credentials 
-        # aws_AK = os.environ.get("AWS_ACCESS_KEY_ID")
-        # aws_SAK = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
         # obtain the file
         client = boto3.client("s3") # create a S3 client
