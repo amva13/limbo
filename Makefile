@@ -49,12 +49,14 @@ docker_build:
 
 .PHONY: docker_test
 docker_test:
-	docker run -e LANG=en_US.UTF-8 tim77/limbo-test
+	@docker run -e LANG=en_US.UTF-8 -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} -e SLACK_TOKEN_S3_BUCKET=${SLACK_TOKEN_S3_BUCKET} tim77/limbo-test
 
 .PHONY: docker_run
 docker_run:
 	@# Suppress echo so slack token does not get shown
 	@docker run -e SLACK_TOKEN=${SLACK_TOKEN} tim77/limbo
+
+	
 
 .PHONY: docker_stop
 docker_stop:
