@@ -53,9 +53,9 @@ docker_test:
 
 .PHONY: docker_run
 docker_run:
-	@# Suppress echo so slack token does not get shown
-	@docker run -e SLACK_TOKEN=${SLACK_TOKEN} tim77/limbo
+	@# Suppress echo so slack token does not get shown .. @docker run -e SLACK_TOKEN=${SLACK_TOKEN} tim77/limbo
 
+	
 
 .PHONY: docker_stop
 docker_stop:
