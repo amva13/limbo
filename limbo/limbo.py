@@ -176,28 +176,15 @@ def init_config():
         import boto3
         file_key = "amva13-stoken" # this is specific to the file of interest
         
-
-        # assume the role we created for aws credentials and obtain said credentials
-        # desired_role = "arn:aws:iam::560921689673:role/LimboTaskRole"
-        # sts_client = boto3.client('sts')
-        # assumedRoleObject = sts_client.assume_role(RoleArn = desired_role, RoleSessionName="role1")
-        # credentials = assumedRoleObject['Credentials']
-
-        # # load credentials
-        # aws_AK = credentials['AccessKeyId']
-        # aws_SAK = credentials['SecretAccessKey']
-
         # load credentials 
         aws_AK = os.environ.get("AWS_ACCESS_KEY_ID")
         aws_SAK = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
         # obtain the file
-        client = boto3.client("s3",
+        client = boto3.resource("s3",
             aws_access_key_id = aws_AK,
             aws_secret_access_key = aws_SAK) # create a S3 client
-        file = client.get_object(Bucket="student.tim77.net",Key=file_key,
-            aws_access_key_id = aws_AK,
-            aws_secret_access_key = aws_SAK)
+        file = client.get_object(Bucket="student.tim77.net",Key=file_key)
 
         # obtain the token (not compressed)
         token = file["Body"].read().decode()
