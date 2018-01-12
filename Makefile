@@ -54,7 +54,7 @@ docker_test:
 .PHONY: docker_run
 docker_run:
 	@# Suppress echo so slack token does not get shown
-	@docker run -e LANG=en_US.UTF-8 -e AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY \
+	@docker run -e LANG=en_US.UTF-8 -e AWS_ACCESS_KEY_ID,AWS_SECRET_ACCESS_KEY,SLACK_TOKEN_S3_BUCKET \
 
 .PHONY: docker_stop
 docker_stop:
